@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="form">
+    <form action="/" method="POST">
+        <label for="TradeName">商品名</label>
+        <input type="text" name="TradeName">
+
+        <label for="BrandName">ブランド名</label>
+        <input type="text" name="BrandName">
+        
+        <label for="CleaningFee">クリーニング代</label>
+        <input type="text" name="CleaningFee">
+        
+        <label for="Memo">メモ</label>
+        <input type="text" name="Memo">
+
+        <input type="submit" value="作成">
+    </form>
+</div>
+{% endblock %}
