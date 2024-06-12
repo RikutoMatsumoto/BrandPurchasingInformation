@@ -1,12 +1,23 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h1>トップページ</h1>
-{% for post in posts %}
-    <h2>商品名 : {{ post.TradeName }}</h2>
-    <p>ブランド名 : {{ post.BrandName }}</p>
-    <p>クリーニング代 : {{ post.CleaningFee }}</p>
-    <p>メモ : {{ post.Memo }}</p>
-    <a href="/detail/{{ post.id }}" role="button">詳細</a>
-{% endfor %}
+<div class="container">
+    <a class="btn btn-info btn-lg m-5" href="/create" role="button">新しく登録</a>
+    {% for post in posts %}
+    <div class="card w-50 mb-3" style="margin: auto;">
+        <div class="card-body">
+            <h2 class="card-title">商品名 : {{ post.TradeName }}</h2>
+            <p>ブランド名 : {{ post.BrandName }}</p>
+            <p>クリーニング代 : {{ post.CleaningFee }}</p>
+            <p>メモ : {{ post.Memo }}</p>
+            <!-- <div style="position:absolute; top:30px; left:130px"> 
+                <img src="images/熊.jpg" alt="写真" width="299" height="257">
+            </div> -->
+            <a class="btn btn-secondary btn-sm" href="/detail/{{ post.id }}" role="button">詳細</a>
+            <a class="btn btn-success btn-sm" href="/update/{{ post.id }}" role="button">編集</a>
+            <a class="btn btn-danger btn-sm" href="/delete/{{ post.id }}" role="button">削除</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}

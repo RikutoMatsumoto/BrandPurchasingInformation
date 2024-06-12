@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 
+# app = Flask(__name__, static_folder='./templates/images')
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///PurchasingInformation.db'
 db = SQLAlchemy(app)
@@ -46,6 +47,30 @@ def read(id):
     post = Post.query.get(id)
 
     return render_template('detail.html', post=post)
+
+
+@app.route('/delete/<int:id>')
+def delete(id):
+    post = Post.query.get(id)
+
+    db.session.delete(post)
+    db.session.commit()
+    return redirect('/')
+
+
+@app.route('/update/<int:id>', methods=['GET', 'POST'])
+def update(id):
+    post = Post.query.get(id)
+    if request.method == 'GET':
+        return render_template('update.html', post=post)
+    else:
+        post.TradeName = request.form.get('TradeName')
+        post.BrandName = request.form.get('BrandName')
+        post.CleaningFee = request.form.get('CleaningFee')
+        post.Memo = request.form.get('Memo')
+
+        db.session.commit()
+        return redirect('/')
 
 
 if __name__ == "__main__":

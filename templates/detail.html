@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h2>詳細</h2>
-
-<h2>{{ post.TradeName }}</h2>
-<p>{{ post.BrandName }}</p>
-<p>{{ post.CleaningFee }}</p>
-<p>{{ post.Memo }}</p>
-
+<h2 class="m-5" style="text-align: center;">詳細</h2>
+<div class="card w-50 mb-3" style="margin: auto;">
+    <div class="card-body">
+        <h2 class="card-title">商品名 : {{ post.TradeName }}</h2>
+        <p>ブランド名 : {{ post.BrandName }}</p>
+        <p>クリーニング代 : {{ post.CleaningFee }}</p>
+        <p>メモ : {{ post.Memo }}</p>
+        <div class="pt-2">
+            <a class="btn btn-outline-success" href="/" role="button">戻る</a>
+            <a class="btn btn-success" href="/update/{{ post.id }}" role="button">編集</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

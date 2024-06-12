@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h2 class="m-5">編集</h2>
+<form class="m-5" action="/update/{{ post.id }}" method="POST">
+    <div class="form-group pb-3">
+        <label for="TradeName">商品名 : </label>
+        <input type="text" class="form-control" name="TradeName" aria-describedby="title-help" value={{ post.TradeName }}>
+    </div>
+    <div class="form-group pb-3">
+        <label for="BrandName">ブランド名 : </label>
+        <input type="text" class="form-control" name="BrandName" value={{ post.BrandName }}>
+    </div>
+    <div class="form-group pb-3">
+        <label for="CleaningFee">クリーニング代 : </label>
+        <input type="text" class="form-control" name="CleaningFee" value={{ post.CleaningFee }}>
+    </div>    
+    <div class="form-group pb-3">
+        <label for="Memo">メモ : </label>
+        <input type="text" class="form-control" name="Memo" value={{ post.Memo }}>
+    </div>
+    <a class="btn btn-outline-primary" href="/" role="button">戻る</a>
+    <button type="submit" class="btn btn-primary">変更</button>
+    </form>
+</form>
+</div>
+{% endblock %}
